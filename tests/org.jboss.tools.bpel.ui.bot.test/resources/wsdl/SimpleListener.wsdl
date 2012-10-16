@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions targetNamespace="http://soa.jboss.org/FirstServiceESB" xmlns:esbns1="http://www.jboss.org/sayHi" xmlns:esbns2="http://www.jboss.org/sayHi" xmlns:esbns3="http://www.jboss.org/sayHi" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://soa.jboss.org/FirstServiceESB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+ <wsdl:types>
+  <xs:schema targetNamespace="http://www.jboss.org/sayHi" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:include schemaLocation="http://localhost:8080/helloworld/ebws/FirstServiceESB/SimpleListener?wsdl&amp;resource=request.xsd"/>
+  </xs:schema>
+  <xs:schema targetNamespace="http://www.jboss.org/sayHi" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:include schemaLocation="http://localhost:8080/helloworld/ebws/FirstServiceESB/SimpleListener?wsdl&amp;resource=response.xsd"/>
+  </xs:schema>
+  <xs:schema targetNamespace="http://www.jboss.org/sayHi" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:include schemaLocation="http://localhost:8080/helloworld/ebws/FirstServiceESB/SimpleListener?wsdl&amp;resource=fault.xsd"/>
+  </xs:schema>
+ </wsdl:types>
+ <wsdl:message name="SimpleListenerReq">
+  <wsdl:part element="esbns3:sayHi" name="in"/>
+ </wsdl:message>
+ <wsdl:message name="SimpleListenerRes">
+  <wsdl:part element="esbns3:sayHiResponse" name="out"/>
+ </wsdl:message>
+ <wsdl:message name="SimpleListenerFault1">
+  <wsdl:part element="esbns3:sayFault" name="fault1"/>
+ </wsdl:message>
+ <wsdl:portType name="SimpleListenerPortType">
+  <wsdl:operation name="SimpleListenerOp">
+   <wsdl:input message="tns:SimpleListenerReq" name="SimpleListenerReq"/>
+   <wsdl:output message="tns:SimpleListenerRes" name="SimpleListenerRes"/>
+   <wsdl:fault message="tns:SimpleListenerFault1" name="fault1"/>
+  </wsdl:operation>
+ </wsdl:portType>
+ <wsdl:binding name="SimpleListenerBinding" type="tns:SimpleListenerPortType">
+  <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  <wsdl:operation name="SimpleListenerOp">
+   <soap:operation soapAction="http://soa.jboss.org/FirstServiceESB/SimpleListenerOp"/>
+   <wsdl:input name="SimpleListenerReq">
+    <soap:body use="literal"/>
+   </wsdl:input>
+   <wsdl:output name="SimpleListenerRes">
+    <soap:body use="literal"/>
+   </wsdl:output>
+   <wsdl:fault name="fault1">
+    <soap:fault name="fault1" use="literal"/>
+   </wsdl:fault>
+  </wsdl:operation>
+ </wsdl:binding>
+ <wsdl:service name="SimpleListenerService">
+  <wsdl:port binding="tns:SimpleListenerBinding" name="SimpleListenerPortType">
+   <soap:address location="http://localhost:8080/helloworld/ebws/FirstServiceESB/SimpleListener"/>
+  </wsdl:port>
+ </wsdl:service>
+</wsdl:definitions>
