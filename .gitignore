@@ -1,0 +1,8 @@
+# ignore Maven generated target folders
+target
+
+# log files
+*.log
+
+# temp files
+*~
