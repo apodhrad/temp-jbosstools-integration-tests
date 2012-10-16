@@ -1,6 +1,9 @@
 # ignore Maven generated target folders
 target
 
+# bin folder
+bin
+
 # log files
 *.log
 
