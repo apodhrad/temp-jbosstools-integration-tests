@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.jboss.tools.bpel</groupId>
-		<artifactId>tests</artifactId>
+		<groupId>org.jboss.tools.integration-tests</groupId>
+		<artifactId>parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>org.jboss.tools.bpel.tests</groupId>
@@ -13,10 +13,7 @@
 	<packaging>eclipse-test-plugin</packaging>
 
 	<properties>
-		<coverage.filter>org.jboss.tools.bpel.runtimes*</coverage.filter>
-		<emma.instrument.bundles>org.jboss.tools.bpel.runtimes</emma.instrument.bundles>
 		<systemProperties>-Dswtbot.test.properties.file=./swtbot.properties</systemProperties>
-		<surefire.timeout>10800</surefire.timeout>
 	</properties>
 
 	<build>
@@ -104,37 +101,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-		
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<configuration>
-					<testSuite>org.jboss.tools.bpel.ui.bot.test</testSuite>
-					<testClass>org.jboss.tools.bpel.ui.bot.test.suite.BPELAllTest</testClass>
-					<useUIThread>false</useUIThread>
-					<skip>${swtbot.test.skip}</skip>
-					<dependencies combine.children="append">
-						<!-- BPEL feature -->
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jboss.tools.bpel.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<!-- JBoss Examples feature -->
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jboss.tools.community.project.examples.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<!-- This feature is due to JBIDE-11608 -->
-						<dependency>
-							<type>p2-installable-unit</type>
-							<artifactId>org.jboss.ide.eclipse.as.feature.feature.group</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-					</dependencies>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
