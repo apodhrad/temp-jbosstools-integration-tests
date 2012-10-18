@@ -17,8 +17,8 @@ import org.teiid.designer.ui.bot.test.VirtualGroupTutorialTest;
  *
  */
 @SuiteClasses({
-//	MyTest.class
-	TopDownWsdlTest.class
+	MyTest.class
+//	TopDownWsdlTest.class
 //	ModelWizardTest.class,
 //	VirtualGroupTutorialTest.class
 	//TeiidSourceInSeamTest.class
