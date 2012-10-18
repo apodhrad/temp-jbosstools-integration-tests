@@ -33,8 +33,8 @@
 		<artifactId>tycho-surefire-plugin</artifactId>
 		<version>${tychoVersion}</version>
 		<configuration>
-		  <testSuite>org.jboss.tools.bpel.ui.bot.test</testSuite>
-		  <testClass>org.jboss.tools.bpel.ui.bot.test.suite.BPELAllTest</testClass>
+		  <testSuite>org.teiid.designer.ui.bot.test</testSuite>
+		  <testClass>org.teiid.designer.ui.bot.test.suite.TeiidDesignerAllTests</testClass>
 		  <useUIThread>false</useUIThread>
 		  <skip>false</skip>
 		  <product>com.jboss.jbds.product.product</product>
@@ -56,6 +56,22 @@
 		    <dependency>
 		      <type>p2-installable-unit</type>
 		      <artifactId>com.jboss.jbds.bpel.feature.feature.group</artifactId>
+		      <version>0.0.0</version>
+		    </dependency>
+		    <!-- TEIID -->
+		    <dependency>
+		      <type>p2-installable-unit</type>
+		      <artifactId>org.eclipse.datatools.enablement.hsqldb.feature.feature.group</artifactId>
+		      <version>0.0.0</version>
+		    </dependency>
+		    <dependency>
+		      <type>p2-installable-unit</type>
+		      <artifactId>org.teiid.designer.runtime.feature.feature.group</artifactId>
+		      <version>0.0.0</version>
+		    </dependency>
+		    <dependency>
+		      <type>p2-installable-unit</type>
+		      <artifactId>org.teiid.datatools.connectivity.feature.feature.group</artifactId>
 		      <version>0.0.0</version>
 		    </dependency>
 		    <!-- Examples -->
