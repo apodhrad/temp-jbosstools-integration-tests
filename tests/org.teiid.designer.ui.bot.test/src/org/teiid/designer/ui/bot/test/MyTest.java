@@ -25,22 +25,28 @@ public class MyTest extends TeiidDesignerTestCase {
 
 		test1();
 		test2();
-		test1();
-		test1();
-		test2();
 		test2();
 		test1();
 		test1();
 		test2();
-
-		System.out.println("Ok");
 	}
 
-	private static void test1() {
+	private static void openMappingDiagram() {
+		ModelExplorerView modelExplorer = TeiidPerspective.getInstance().getModelExplorerView();
+
+		modelExplorer.open("ModeShapeGoodies", "BooksDoc.xmi", "bookListingDocument",
+				"Mapping Diagram");
+	}
+
+	private static void openTransformationDiagram() {
 		ModelExplorerView modelExplorer = TeiidPerspective.getInstance().getModelExplorerView();
 
 		modelExplorer.open("ModeShapeGoodies", "RelModels", "BooksInfo.xmi", "bookInfo",
 				"Transformation Diagram");
+	}
+
+	private static void test1() {
+		openTransformationDiagram();
 
 		ModelEditor modelEditor = modelEditor("BooksInfo.xmi");
 		modelEditor.show();
@@ -50,10 +56,7 @@ public class MyTest extends TeiidDesignerTestCase {
 	}
 
 	private static void test2() {
-		ModelExplorerView modelExplorer = TeiidPerspective.getInstance().getModelExplorerView();
-
-		modelExplorer.open("ModeShapeGoodies", "BooksDoc.xmi", "bookListingDocument",
-				"Mapping Diagram");
+		openMappingDiagram();
 
 		ModelEditor modelEditor = modelEditor("BooksDoc.xmi");
 		modelEditor.show();
