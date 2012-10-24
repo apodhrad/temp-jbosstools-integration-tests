@@ -34,7 +34,7 @@ import org.teiid.designer.ui.bot.ext.teiid.matcher.WaitForFigure;
  * This class represents Model Editor in Teiid Designer perspective.
  * 
  * @author apodhrad
- *
+ * 
  */
 public class ModelEditor extends SWTBotEditor {
 
@@ -55,7 +55,7 @@ public class ModelEditor extends SWTBotEditor {
 		canvas = new SWTBotGefFigureCanvas((FigureCanvas) bot.widget(matcher, 0));
 
 	}
-	
+
 	private GraphicalEditor getGraphicalEditor(String tabLabel) {
 		final SWTBotCTabItem tabItem = showTab(tabLabel);
 		GraphicalEditor graphicalEditor = syncExec(new Result<GraphicalEditor>() {
@@ -71,7 +71,7 @@ public class ModelEditor extends SWTBotEditor {
 		});
 		return graphicalEditor;
 	}
-	
+
 	public SWTBotGefViewer getGraphicalViewer(String tabLabel) {
 		final GraphicalEditor graphicalEditor = getGraphicalEditor(tabLabel);
 		GraphicalViewer graphicalViewer = syncExec(new Result<GraphicalViewer>() {
@@ -97,12 +97,14 @@ public class ModelEditor extends SWTBotEditor {
 	}
 
 	public void showTransformation() {
+		log.info("Show transformation");
 		viewer = getGraphicalViewer(TRANSFORMATION_DIAGRAM);
 		viewer.editParts(IsTransformation.isTransformation()).get(0).select();
 		viewer.clickContextMenu("Edit");
 	}
 
 	public void showMappingTransformation(String label) {
+		log.info("Show mapping transformation for '" + label + "'");
 		viewer = getGraphicalViewer(MAPPING_DIAGRAM);
 		viewer.getEditPart(label).select();
 		viewer.clickContextMenu("Edit");
@@ -131,6 +133,7 @@ public class ModelEditor extends SWTBotEditor {
 	}
 
 	public void setTransformation(String text) {
+		log.info("Set transformation '" + text + "'");
 		bot.styledText(0).setText(text);
 	}
 

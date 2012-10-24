@@ -27,10 +27,6 @@ public class MyTest extends TeiidDesignerTestCase {
 
 		test1();
 		test2();
-		test2();
-		test1();
-		test1();
-		test2();
 	}
 
 	private static void openMappingDiagram() {

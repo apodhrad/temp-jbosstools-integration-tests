@@ -176,6 +176,7 @@ public class TeiidDesignerTestCase extends SWTTestExt {
 
 	@AfterClass
 	public static void saveAllFiles() {
+		log.info("Save all files");
 		if(bot.menu("File").menu("Save All").isEnabled()) {
 			bot.menu("File").menu("Save All").click();
 			bot.waitWhile(new NonSystemJobRunsCondition(), TaskDuration.LONG.getTimeout());
