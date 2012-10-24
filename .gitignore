@@ -12,3 +12,7 @@ bin
 
 # screenshots
 screenshots
+
+# launchers
+launcher
+*.launch
