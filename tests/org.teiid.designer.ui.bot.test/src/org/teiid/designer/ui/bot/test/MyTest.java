@@ -5,6 +5,7 @@ import org.jboss.tools.ui.bot.ext.config.Annotations.Server;
 import org.jboss.tools.ui.bot.ext.config.Annotations.ServerState;
 import org.jboss.tools.ui.bot.ext.config.Annotations.ServerType;
 import org.jboss.tools.ui.bot.ext.helper.ImportHelper;
+import org.jboss.tools.ui.bot.ext.helper.ResourceHelper;
 import org.junit.Test;
 import org.teiid.designer.ui.bot.ext.teiid.editor.ModelEditor;
 import org.teiid.designer.ui.bot.ext.teiid.perspective.TeiidPerspective;
@@ -21,7 +22,8 @@ public class MyTest extends TeiidDesignerTestCase {
 
 	@Test
 	public void myTest() {
-		ImportHelper.importProjectFromZip("/home/apodhrad/Downloads/ModeShapeGoodies.zip");
+		String path = ResourceHelper.getResourceAbsolutePath("org.teiid.designer.ui.bot.test", "resources", "ModeShapeGoodies.zip");
+		ImportHelper.importProjectFromZip(path);
 
 		test1();
 		test2();
